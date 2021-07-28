@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <title>Testing Fast.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <style>
+      button {
+        background-color: gray;
+        color: white;
+      }
+    </style>
+    <div>Test fast.js. See your console output.</div>
+    <hr />
+    <div>
+      <h2>Fast Login</h2>
+      <fast-login
+        app_id="2534a866-fdeb-40ea-bcd3-7d105616e38b"
+        id="fast-login-button"
+      />
+
+      <script type="text/javascript">
+        const fastLoginButton = document.querySelector("#fast-login-button");
+        fastLoginButton.addEventListener("complete", (event) => {
+          // event properties: event.detail.token
+          console.log({ token: event.detail.token });
+        });
+      </script>
+    </div>
+    <script src="https://local.dev.slow.dev:5000/dist/fast.js"></script>
+    <script>
+      console.log("ready.");
+    </script>
+  </body>
+</html>

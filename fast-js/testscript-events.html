@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <title>Testing Fast.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div>
+      <h1>Fast Checkout button click event</h1>
+      <div>
+        <form>
+          <input type="text" />
+          <fast-checkout-button
+            id="fcb"
+            app_id="d4c8de63-bd7c-478a-a02e-eaa974deb9fb"
+          >
+          </fast-checkout-button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h1>
+        Fast Checkout buttons - attach event listeners via Fast.addEventListener
+      </h1>
+      <form>
+        <input type="text" />
+        <fast-checkout-button app_id="d4c8de63-bd7c-478a-a02e-eaa974deb9fb">
+        </fast-checkout-button>
+        <fast-checkout-button app_id="d4c8de63-bd7c-478a-a02e-eaa974deb9fb">
+        </fast-checkout-button>
+      </form>
+      <button id="removeListener" type="button">Remove listener</button>
+    </div>
+    <script src="/dist/fast.js"></script>
+    <script>
+      const fcClick = document.querySelector("#fcb");
+      fcClick.addEventListener("click", (event) => {
+        console.log("Fast Checkout button, click event:", event);
+      });
+
+      fcClick.addEventListener("quantity-changed", (event) => {
+        console.log("Fast Checkout button, quantity-changed event:", event);
+      });
+
+      fcClick.addEventListener("order-created", (event) => {
+        const { order } = event.detail;
+        console.log("Fast Checkout button, order-created event, order:", order);
+      });
+
+      // listen to order-created event by using fast.addEventListener.
+      const fast = new Fast("d4c8de63-bd7c-478a-a02e-eaa974deb9fb");
+      const orderCreatedListener = (event) => {
+        console.log("orderCreatedListener - event: ", event);
+      };
+      fast.addEventListener("order-created", orderCreatedListener);
+
+      // click the Remove Listener button to remove listener.
+      const removeListenerButton = document.querySelector("#removeListener");
+      removeListenerButton.addEventListener("click", () => {
+        fast.removeEventListener("order-created", orderCreatedListener);
+      });
+    </script>
+  </body>
+</html>

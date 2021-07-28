@@ -1,0 +1,13 @@
+{
+  "name": "fast-components",
+  "version": "0.1.0",
+  "dependencies": {
+       "dompurify": "^2.2.2"   
+  },
+  "devDependencies": {
+    "@types/dompurify": "^2.0.4"
+  },
+  "private": true,
+  "scripts": {
+  }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <title>Testing Fast.js</title>
+  </head>
+  <body>
+    <style>
+      button {
+        background-color: gray;
+        color: white;
+      }
+    </style>
+    <div>Test fast.js. See your console output.</div>
+    <hr />
+    <div>
+      <h2>Form</h2>
+      <p>
+        fast-checkout-button should be programmatically injected into the form
+        below. Type values into the form below, and click Fast Checkout button,
+        it should open a new window popup with the form values in URL.
+      </p>
+      <form data-cart-item-add>
+        <div style="margin-bottom: 16px">
+          <input type="text" name="text1" value="text1" />
+          <button type="submit" value="value:test button in form">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxMyAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4wODc0IDYuMTM1NzNIMTEuNDY5N0MxMS44OTE5IDYuMTUxNCAxMi4yODk5IDYuMzE1NjkgMTIuNTc2NSA2LjU5MjYxQzEyLjg2MzIgNi44Njk1MyAxMy4wMTUgNy4yMzY0OCAxMi45OTg4IDcuNjEzMDdWMTMuNTIyNkMxMy4wMTUgMTMuODk5MiAxMi44NjMyIDE0LjI2NjIgMTIuNTc2NiAxNC41NDMxQzEyLjI4OTkgMTQuODIgMTEuODkxOSAxNC45ODQzIDExLjQ2OTcgMTVIMS41MzAzMUMxLjEwODEgMTQuOTg0MyAwLjcxMDA3NiAxNC44MiAwLjQyMzQ1MSAxNC41NDMxQzAuMTM2ODI2IDE0LjI2NjIgLTAuMDE1MDI0MiAxMy44OTkyIDAuMDAxMTc0ODkgMTMuNTIyNlY3LjYxMzA3Qy0wLjAxNTAxMzggNy4yMzY0OSAwLjEzNjg0MSA2Ljg2OTUzIDAuNDIzNDY1IDYuNTkyNjJDMC43MTAwODkgNi4zMTU3IDEuMTA4MTEgNi4xNTE0MSAxLjUzMDMxIDYuMTM1NzNIMS45MTI1OVYzLjc0NzU1QzEuOTEyNTkgMi4zNzMzOCAyLjIzNjA4IDEuNTcyNzcgMi45NTU4MSAwLjkzMDc1MUMzLjY3NTUzIDAuMjg4NzM3IDQuNTcyNjQgMCA2LjExMjgyIDBINi44ODcxQzguNDI3MjggMCA5LjMyNDUgMC4yODg3MDMgMTAuMDQ0MiAwLjkzMDc1MUMxMC43NjM5IDEuNTcyOCAxMS4wODc0IDIuMzczMzggMTEuMDg3NCAzLjc0NzU1VjYuMTM1NzNaTTkuNTU4MjcgMy43NDgxM0M5LjU1ODI3IDIuODczNjcgOS4zNTIzMyAyLjM2NDIxIDguODk0NCAxLjk1NTY0QzguNDM2NDYgMS41NDcwNiA3Ljg2NTUyIDEuMzYzMzYgNi44ODUzNCAxLjM2MzM2SDYuMTE0ODFDNS4xMzQ2NyAxLjM2MzM2IDQuNTYzNjkgMS41NDcwNiA0LjEwNTc5IDEuOTU1NjRDMy42NDc5IDIuMzY0MjEgMy40NDE3MyAyLjg3MzY3IDMuNDQxNzMgMy43NDgxM1Y2LjEzNTczSDkuNTU4MjdWMy43NDgxM1oiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+              alt="Secured Fast Checkout"
+            />
+            <span
+              >span:test button grey color in form with page-level style</span
+            >
+          </button>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div>
+      <h2>Declarative</h2>
+      <p>
+        The page author manually code in fast-checkout-button in html. There is
+        no event listener - clicking on it does nothing.
+      </p>
+      <form data-cart-item-add>
+        <div style="margin-bottom: 16px">
+          <input type="text" name="text1" value="text1" />
+          <fast-checkout-button app_id="90bc7f49-47d2-4f8f-b972-b22e8cc1ad86" />
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div>
+      <h2>Form with no Javascript</h2>
+      <p>
+        fast-checkout-button is writen declaratively in the HTML form. Type
+        values into the form below, and click Fast Checkout button, it should
+        open a new window popup with the form values in URL.
+      </p>
+      <form data-cart-item-add>
+        <div style="margin-bottom: 16px">
+          <input type="text" name="text1" value="text1" required />
+        </div>
+        <fast-checkout-button app_id="90bc7f49-47d2-4f8f-b972-b22e8cc1ad86" />
+      </form>
+    </div>
+    <hr />
+    <div>
+      <h2>Checkout cart</h2>
+      <p>
+        fast-checkout-cart-button is writen declaratively in the HTML form. Type
+        values into the form below, and click Fast Checkout button, it should
+        open a new window popup with the form values in URL.
+      </p>
+      <form data-cart-item-add>
+        <div style="margin-bottom: 16px">
+          <input type="text" name="text1" value="text1" />
+        </div>
+        <fast-checkout-cart-button
+          cart_id="aa1acb89-b800-4d0c-b7c4-3c6b6faa833d"
+          app_id="c6e1bcf2-4bd8-45fd-9c60-8ee1f575e88d"
+        />
+      </form>
+    </div>
+    <hr />
+    <div>
+      <h2>Fast Login button</h2>
+      <fast-login-button
+        id="fastloginbutton"
+        app_id="90bc7f49-47d2-4f8f-b972-b22e8cc1ad86"
+      />
+    </div>
+    <hr />
+    <div>
+      <h2>Fast Login</h2>
+      <fast-login app_id="90bc7f49-47d2-4f8f-b972-b22e8cc1ad86" />
+    </div>
+    <hr />
+    <div>
+      <h2>PDP Checkout (no form)</h2>
+      <fast-checkout-button app_id="90bc7f49-47d2-4f8f-b972-b22e8cc1ad86" />
+    </div>
+    <hr />
+    <div>
+      <h2>PDP Checkout (no app_id)</h2>
+      <form>
+        <input type="hidden" name="product_id" value="117" />
+        <fast-checkout-button />
+      </form>
+    </div>
+    <script src="/dist/fast-bigcommerce.js"></script>
+    <script>
+      const fast = new Fast("90bc7f49-47d2-4f8f-b972-b22e8cc1ad86");
+      const form = document.querySelector("form[data-cart-item-add]");
+
+      const fastCheckoutButton = fast.createButton();
+
+      // manually override onclick handler:
+      // collect data from form, and trigger Fast Checkout.
+      // this can be done on any button in any HTML page.
+      fastCheckoutButton.onclick = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const fast = new Fast("90bc7f49-47d2-4f8f-b972-b22e8cc1ad86");
+        const formData = new FormData(form);
+        for (const [key, value] of formData.entries()) {
+          console.log("key:", key, "value:", value);
+
+          if (key === "product_id") {
+            fast.setProductKey(value);
+          } else if (key.startsWith("attribute")) {
+            fast.setOption(key, value);
+          } else if (key === "qty[]") {
+            fast.setQuantity(value);
+          } else {
+            fast.setOption(key, value);
+          }
+        }
+
+        fast.checkout();
+      };
+
+      // add the button into the form.
+      form.append(fastCheckoutButton);
+
+      // attach listener to #fastloginbutton
+      const fastloginbutton = document.querySelector("#fastloginbutton");
+      fastloginbutton.addEventListener("complete", (event) => {
+        console.log({ event });
+      });
+    </script>
+  </body>
+</html>

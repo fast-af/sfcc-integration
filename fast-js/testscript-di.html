@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://local.dev.slow.dev:5000/dist/fast.js"></script>
+    <style>
+      fast-checkout-button {
+        width: 400px;
+      }
+
+      body {
+        font-family: Inter, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Programmatic checkout testin'</h1>
+    <!-- these app_id/product_ids may be out of date, they were from a sandbox test store -->
+    <p>Click a button below to initiate a purchase</p>
+    <h2>Socks</h2>
+    <p>
+      Buys Rudy's socks, and uses $10 off coupon. Also passes affiliate
+      <code>brikaffiliate</code>.
+    </p>
+    <fast-checkout-button id="socks-btn"></fast-checkout-button>
+    <script>
+      (function () {
+        var socksButton = document.getElementById("socks-btn");
+        socksButton.addEventListener("click", (event) => {
+          Fast.checkout({
+            appId: "0fba0df0-64b5-4340-a1bf-5374b8007477",
+            buttonId: event.target.id,
+            products: [
+              {
+                id: "116",
+                quantity: 1,
+              },
+            ],
+            couponCode: "10OFF",
+            affiliateInfo: {
+              affiliates: [
+                {
+                  id: "brikaffiliate",
+                },
+              ],
+            },
+          });
+        });
+      })();
+    </script>
+    <h2>Variant product</h2>
+    <!-- these app_id/product_ids may be out of date, they were from a sandbox test store -->
+
+    <p>Buy Brik's variant product (holiday edition).</p>
+    <fast-checkout-button id="skeletor-btn"></fast-checkout-button>
+    <script>
+      var skeletorButton = document.getElementById("skeletor-btn");
+      skeletorButton.addEventListener("click", (event) => {
+        Fast.checkout({
+          appId: "0fba0df0-64b5-4340-a1bf-5374b8007477",
+          buttonId: event.target.id,
+          products: [
+            {
+              id: "117",
+              variantId: "93",
+              quantity: 1,
+            },
+          ],
+        });
+      });
+    </script>
+    <h2>Product with options</h2>
+    <p>
+      Buy a hoodie from WC test store (you must be using staging checkout for
+      this one to work)
+    </p>
+    <fast-checkout-button id="hoodie-btn"></fast-checkout-button>
+    <script>
+      var hoodieButton = document.getElementById("hoodie-btn");
+      hoodieButton.addEventListener("click", (event) => {
+        Fast.checkout({
+          appId: "75171226-9c45-4cdb-b136-a49b1d479632",
+          buttonId: event.target.id,
+          products: [
+            {
+              id: "41",
+              variantId: "42838",
+              options: [
+                {
+                  id: "attribute_pa_color",
+                  value: "gray",
+                },
+                {
+                  id: "attribute_logo",
+                  value: "No",
+                },
+                {
+                  id: "empty_option",
+                  value: "",
+                },
+              ],
+              quantity: 1,
+            },
+          ],
+        });
+      });
+    </script>
+    <h2>Another store</h2>
+    <p>Buy 3 Fast Mugs from the Dev Swag Store.</p>
+    <fast-checkout-button id="mug-btn"></fast-checkout-button>
+    <script>
+      var mugButton = document.getElementById("mug-btn");
+      mugButton.addEventListener("click", (event) => {
+        Fast.checkout({
+          appId: "3b4929eb-7bb1-486a-b045-d0b40344ac38",
+          buttonId: event.target.id,
+          products: [
+            {
+              id: "119",
+              quantity: 3,
+            },
+          ],
+          affiliateInfo: {
+            affiliates: [
+              {
+                id: "brik",
+              },
+            ],
+          },
+        });
+      });
+    </script>
+    <h2>Button attributes</h2>
+    <p>Buy a Fast mug with zero custom JavaScript.</p>
+    <fast-checkout-button
+      app_id="3b4929eb-7bb1-486a-b045-d0b40344ac38"
+      product_id="119"
+    ></fast-checkout-button>
+    <h3>Variant selection headless demo</h3>
+    <p>
+      Buy a Fast youth t-shirt with zero custom JavaScript. (goes to variant
+      selection)
+    </p>
+    <fast-checkout-button
+      app_id="3b4929eb-7bb1-486a-b045-d0b40344ac38"
+      product_id="117"
+    ></fast-checkout-button>
+    <p>Buy a Fast Pink 2T youth t-shirt</p>
+    <fast-checkout-button
+      app_id="3b4929eb-7bb1-486a-b045-d0b40344ac38"
+      product_id="117"
+      product_options='{" 121":"145","122":"139"}'
+    ></fast-checkout-button>
+  </body>
+</html>

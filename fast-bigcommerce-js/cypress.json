@@ -1,0 +1,17 @@
+{
+  "viewportWidth": 400,
+  "viewportHeight": 800,
+  "chromeWebSecurity": false,
+  "projectId": "fast-bigcommerce-js",
+  "testFiles": "**/*.spec.*",
+  "baseUrl": "https://ilker-fast.mybigcommerce.com",
+  "retries": { "runMode": 2, "openMode": 2 },
+  "screenshotOnRunFailure": true,
+  "video": true,
+  "env": {},
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/my-test-output.xml",
+    "toConsole": true
+  }
+}

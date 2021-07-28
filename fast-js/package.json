@@ -1,0 +1,78 @@
+{
+  "name": "fast-js",
+  "description": "Fast JS library",
+  "version": "1.0.0",
+  "author": "fast-af",
+  "bugs": {
+    "url": "https://github.com/fast-af/fast-js/issues"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@types/jest": "^26.0.20",
+    "babel-plugin-transform-builtin-classes": "^0.6.1",
+    "core-js": "^3.7.0",
+    "dompurify": "^2.2.2",
+    "js-cookie": "^2.2.1",
+    "lodash-webpack-plugin": "^0.11.5",
+    "ts-jest": "^26.5.0",
+    "ts-loader": "^8.0.15",
+    "wait-for-expect": "^3.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.14.5",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/preset-env": "^7.14.7",
+    "@peculiar/webcrypto": "^1.1.6",
+    "@types/dompurify": "^2.2.3",
+    "@types/jest": "^26.0.20",
+    "@types/js-cookie": "^2.2.6",
+    "@typescript-eslint/typescript-estree": "^4.15.2",
+    "@zeit/next-typescript": "^1.1.1",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.13.2",
+    "babel-plugin-transform-builtin-classes": "^0.6.1",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "jest": "^27.0.6",
+    "prettier": "^2.2.1",
+    "prettier-eslint-cli": "^5.0.0",
+    "prettier-plugin-organize-imports": "^1.1.1",
+    "prettier-standard": "^16.4.1",
+    "serialize-javascript": ">=3.1.0",
+    "serve": "^11.3.2",
+    "terser-webpack-plugin": "^4.2.3",
+    "yargs": "^16.2.0"
+  },
+  "eslintIgnore": [
+    "dist",
+    "node_modules"
+  ],
+  "homepage": "https://github.com/fast-af/fast-js#readme",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fast-af/fast-js.git"
+  },
+  "resolutions": {
+    "terser-webpack-plugin": "^4.2.3"
+  },
+  "scripts": {
+    "build": "webpack --mode=production --env CHECKOUT_URL='https://checkout.dev.slow.dev' --env API_URL='https://api.dev.slow.dev'",
+    "deploy": "true",
+    "lint": "eslint --ext .ts,.tsx \"$(pwd)/**/**/*.{ts,tsx}\" && tsc",
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "pretty:lint": "prettier-eslint \"$(pwd)/**/*.{js,jsx,ts,tsx}\" --write",
+    "pretty:check": "prettier \"$(pwd)/**/*.{js,jsx,ts,tsx}\" --check --ignore-path ../.prettierignore",
+    "serve": "serve .",
+    "test": "CHECKOUT_URL=https://example.local jest --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "CHECKOUT_URL=https://example.local jest --coverage  --coverageReporters=json --coverageReporters=lcov --coverageReporters=json-summary --env=jest-environment-jsdom-sixteen",
+    "test:watch": "CHECKOUT_URL=https://example.local jest --watch  --env=jest-environment-jsdom-sixteen"
+  }
+}
