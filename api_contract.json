@@ -501,11 +501,11 @@
           },
           "order_id": {
             "$ref": "#/components/schemas/v1UUID"
+          },
+          "external_id": {
+            "type": "string"
           }
         }
-      },
-      "v1DeleteOrderResponseSegment": {
-        "type": "object"
       },
       "v1DeleteRequest": {
         "type": "object",
@@ -536,12 +536,6 @@
           },
           "type": {
             "$ref": "#/components/schemas/v1EntityType"
-          },
-          "order": {
-            "$ref": "#/components/schemas/v1DeleteOrderResponseSegment"
-          },
-          "webhook": {
-            "$ref": "#/components/schemas/v1DeleteWebhookResponseSegment"
           }
         },
         "title": "-------------------------------- Start: Delete Response -------------------------------- //"
@@ -556,9 +550,6 @@
             }
           }
         }
-      },
-      "v1DeleteWebhookResponseSegment": {
-        "type": "object"
       },
       "v1Dimension": {
         "type": "object",
@@ -889,6 +880,9 @@
             "items": {
               "$ref": "#/components/schemas/v1OrderCustomValue"
             }
+          },
+          "external_item_id": {
+            "type": "string"
           }
         }
       },
@@ -1390,7 +1384,7 @@
           "order_id": {
             "$ref": "#/components/schemas/v1UUID"
           },
-          "external_order_id": {
+          "external_id": {
             "type": "string"
           },
           "include": {
@@ -1521,14 +1515,8 @@
           "order": {
             "$ref": "#/components/schemas/v1ReadOrderRequestSegment"
           },
-          "shipping_option": {
-            "$ref": "#/components/schemas/v1ReadShippingOptionRequestSegment"
-          },
           "user": {
             "$ref": "#/components/schemas/v1ReadUserRequestSegment"
-          },
-          "shipping_zones": {
-            "$ref": "#/components/schemas/v1ReadShippingZonesRequestSegment"
           },
           "product": {
             "$ref": "#/components/schemas/v1ReadProductRequestSegment"
@@ -1559,9 +1547,6 @@
           },
           "order": {
             "$ref": "#/components/schemas/v1ReadOrderResponseSegment"
-          },
-          "shipping_option": {
-            "$ref": "#/components/schemas/v1ReadShippingOptionResponseSegment"
           },
           "user": {
             "$ref": "#/components/schemas/v1ReadUserResponseSegment"
@@ -1595,15 +1580,6 @@
           }
         },
         "title": "-------------------------------- Start: Read Response -------------------------------- //"
-      },
-      "v1ReadShippingOptionRequestSegment": {
-        "type": "object"
-      },
-      "v1ReadShippingOptionResponseSegment": {
-        "type": "object"
-      },
-      "v1ReadShippingZonesRequestSegment": {
-        "type": "object"
       },
       "v1ReadShippingZonesResponseSegment": {
         "type": "object",
