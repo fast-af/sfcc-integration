@@ -1,0 +1,36 @@
+{
+	"hooks": [
+		{
+			"name" : "dw.ocapi.shop.basket.beforePOST",
+			"script": "./basket/basketHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.modifyPOSTResponse",
+            "script": "./basket/basketHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.modifyGETResponse",
+            "script": "./basket/basketHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.order.afterPOST",
+			"script": "./order/orderHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.order.modifyGETResponse",
+			"script": "./order/orderHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.items.modifyPOSTResponse",
+			"script": "./product/productHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.item.modifyPATCHResponse",
+			"script": "./product/productHookScripts.js"
+		},
+		{
+			"name": "dw.ocapi.shop.basket.item.modifyDELETEResponse",
+			"script": "./product/productHookScripts.js"
+		}
+	]
+}

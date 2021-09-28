@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<payment-settings xmlns="http://www.demandware.com/xml/impex/paymentsettings/2009-09-15">
+    <payment-method method-id="Fast">
+        <name xml:lang="x-default">Fast</name>
+        <description xml:lang="x-default">Fast Payment</description>
+        <enabled-flag>true</enabled-flag>
+    </payment-method>
+</payment-settings>

@@ -1,0 +1,27 @@
+.fast-wrapper {
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-right: 20%;
+    padding-left: 20%;
+    padding-bottom: 20px;
+}
+
+.fast-or-message {
+    position: relative;
+    top: 80px;
+    background: white;
+    width: 40px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #757575;
+}
+
+.fast-checkout {
+    pointer-events: none;
+}
+
+.fast-checkout-enabled {
+    pointer-events: all;
+}

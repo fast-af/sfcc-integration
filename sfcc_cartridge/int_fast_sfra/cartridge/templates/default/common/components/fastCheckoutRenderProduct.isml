@@ -1,0 +1,16 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/fastCheckout.css');
+</isscript>
+
+<isset name="fastAppID" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastAppId')}" scope="page" />
+<isset name="fastTheme" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastTheme')}" scope="page" />
+
+<div class="col-12 fast-wrapper">
+    <isif condition="${product && !product.disableFastCheckout}">
+        <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
+        <fast-checkout-button class="fast-checkout" id="fastProductCheckoutButton" ${!product.readyToOrder ? 'disabled' : ''}
+            app_id="${fastAppID}" product_id="${product.id}" ${fastTheme}>
+        </fast-checkout-button>
+    </isif>
+</div>
