@@ -12,7 +12,7 @@ Fast payment Integrations for SFCC
 3. Testing
 4. Business Manager User Guide
 
-Refer sfcc_cartridge/Fast-LINK Integration-SFRA.pdf and/or do below steps,
+Refer sfcc_cartridge/<a href="https://github.com/fast-af/sfcc-integration/raw/master/sfcc_cartridge/Fast-LINK%20Integration-SFRA.pdf">Fast-LINK Integration-SFRA.pdf</a> and/or do below steps,
 
 1. Setup of Business Manager
 
