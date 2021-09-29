@@ -3,21 +3,20 @@
 
 ### What is this repository for? ###
 
-Fast payment Integrations 
+Fast payment Integrations for SFCC
 
 ### How do I get set up? ###
 
-Refer Fast-LINK Integration-SFRA.pdf and do below steps,
+Refer sfcc_cartridge/Fast-LINK Integration-SFRA.pdf and do below steps,
 
-3. Implementation Guide
-4. Testing
-6. User Guide
+1. Follow Implementation Guide for installing
+2. Get AppID & Token from Fast
+3. Reach out to integrations@fast.co on how to setup
 
 ### Who do I talk to? ###
 
 Group Mailing lists: 
 
-<<>>@fast.com (All tech only)
-<<>>@fast.com (PM + Leads + QA)
+<<>>integrations@fast.co
 
 
