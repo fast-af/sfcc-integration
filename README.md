@@ -1,4 +1,4 @@
-# README #
+# README # Fast Salesforce Commerce Cloud Cartridge
 
 
 ### What is this repository for? ###
@@ -430,8 +430,6 @@ Mini Cart
 
 ### Who do I talk to? ###
 
-Group Mailing lists: 
-
-<<>>integrations@fast.co
+https://help.fast.co/hc/en-us 
 
 
