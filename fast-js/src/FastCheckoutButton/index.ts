@@ -1,1 +1,0 @@
-export { FastCheckoutButton } from "./FastCheckoutButton";
