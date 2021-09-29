@@ -5,12 +5,10 @@
 
 Fast payment Integrations for SFCC
 
-### How do I get set up? ###
+### Use the Fast Salesforce Commerce Cloud Cartridge for ###
 
-1. Setup of Business Manager
-2. Custom Code
-3. Testing
-4. Business Manager User Guide
+Enabling Fast one-click checkout on the PDP, Cart pages and anywhere using Fast headless checkout
+Setting up Business Manager in Salesforce Commerce Cloud
 
 Refer to <a href="https://github.com/fast-af/sfcc-integration/raw/master/sfcc_cartridge/Fast-LINK%20Integration-SFRA.pdf">Fast-LINK Integration-SFRA.pdf</a> for detailed steps.
 
