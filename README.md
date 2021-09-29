@@ -7,7 +7,12 @@ Fast payment Integrations for SFCC
 
 ### How do I get set up? ###
 
-Refer sfcc_cartridge/Fast-LINK Integration-SFRA.pdf and do below steps,
+1. Setup of Business Manager
+2. Custom Code
+3. Testing
+4. Business Manager User Guide
+
+Refer sfcc_cartridge/Fast-LINK Integration-SFRA.pdf and/or do below steps,
 
 1. Setup of Business Manager
 
@@ -54,8 +59,6 @@ Fast require below configurations steps
 Create Account / Credentials
 SFCC BM Configurations 
 Fast Configurations
-
-Credentials Functional Workflow
 
 
 Step #1: Create Account / Credentials
@@ -308,7 +311,7 @@ Step #3: Fast Configurations
 Navigate to the Fast account page and update the below settings
 Submit a Fast support ticket sharing the client id and password created in the previous step as well as your Business Manager integration user’s username and password
 
-Custom Code
+2. Custom Code
 
 Customize the below pages to show the Fast checkout button. Include custom ISML files into site-specific Storefront Base or App Storefront Base Cartridge ISML files:
 PDP
@@ -348,17 +351,7 @@ Add given code in cartridge/templates/default/checkout/cart/miniCart.isml as  fi
 <isinclude template="common/components/fastCheckoutRenderCart" />
 
 
-
-
-External Interfaces
-
-No External Interfaces
-
-Firewall Requirements
-
-No specific firewall requirements
-
-Testing
+3. Testing
 Checkout Flow Integration Tests
 
 Positive Test Cases:
@@ -406,7 +399,7 @@ Site level Fast button configuration
 Is Fast Enabled = True; result: button is eligible to be displayed on storefront
 Is Fast Enabled = False; result: button is ineligible to be displayed on storefront
   
-Business Manager User Guid
+4. Business Manager User Guide
 Enable Fast Payment
 Users can enable Fast  payment in the below levels
 Site Level
