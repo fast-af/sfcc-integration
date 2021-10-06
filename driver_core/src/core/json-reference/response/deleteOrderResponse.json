@@ -1,8 +1,0 @@
-{
-  "request_id": {
-    "value": "string"
-  },
-  "type": "ENTITY_TYPE_ORDER",
-  "order": {},
-  "webhook": {}
-}
