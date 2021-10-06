@@ -1,0 +1,10 @@
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export enum V1ShippingOptionType {
+  UNSPECIFIED = "SHIPPING_OPTION_TYPE_UNSPECIFIED",
+  INSTOREPICKUP = "SHIPPING_OPTION_TYPE_IN_STORE_PICKUP",
+  OTHER = "SHIPPING_OPTION_TYPE_OTHER",
+}

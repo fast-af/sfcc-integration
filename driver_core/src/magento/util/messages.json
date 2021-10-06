@@ -1,0 +1,13 @@
+{
+  "1001": "Unknown or unhandled error.",
+
+  "2001": "Unknown error during create operation.",
+  "2002": "Error during create cart.",
+  "2003": "Error during adding product(s) to cart - data is invalid, or product SKU does not exist.",
+
+  "3001": "Unknown error during read operation.",
+
+  "4001": "Unknown error during update operation.",
+
+  "5001": "Unknown error during delete operation."
+}

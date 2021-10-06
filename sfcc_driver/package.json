@@ -1,0 +1,68 @@
+{
+  "name": "fastco-middlware-core",
+  "version": "1.0.0",
+  "description": "Fast middleware app for SFCC/Magento integration",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "dev": "NODE_ENV=development cross-env nodemon -r dotenv/config src/app.ts",
+    "clean": "rimraf dist/",
+    "copy-static": "cp ./.env ./dist/ && cp ./src/sfcc/util/messages.json ./dist/sfcc/util/ && cp ./src/magento/util/messages.json ./dist/magento/util/",
+    "build": "npm run clean && tsc -p . && npm run copy-static",
+    "start-dev": "NODE_ENV=production NODE_PATH=./dist node -r dotenv/config dist/app.js | pino-pretty",
+    "start": "NODE_ENV=production NODE_PATH=./dist node -r dotenv/config dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/borngroup/fastco-middlware-core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/borngroup/fastco-middlware-core#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.3",
+    "@types/koa-response-time": "^2.1.1",
+    "@types/koa-router": "^7.4.4",
+    "@types/on-finished": "^2.3.1",
+    "@types/pino": "^6.3.11",
+    "@types/qs": "^6.9.7",
+    "axios": "^0.21.1",
+    "clean-deep": "^3.4.0",
+    "clf-date": "^0.2.0",
+    "dotenv": "^10.0.0",
+    "jest": "^27.0.6",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-requestid": "^2.1.0",
+    "koa-response-time": "^2.1.0",
+    "koa-router": "^10.0.0",
+    "object-mapper": "^6.2.0",
+    "on-finished": "^2.3.0",
+    "pino": "^6.13.0",
+    "request-received": "^0.0.3",
+    "rimraf": "^3.0.2",
+    "sfcc-ocapi-documents": "^1.1.2",
+    "stacktrace-js": "^2.0.2",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@pollyjs/core": "^5.1.1",
+    "@types/jest": "^27.0.0",
+    "@types/pino-pretty": "^4.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "nodemon": "^2.0.12",
+    "pino-pretty": "^7.0.1",
+    "prettier": "^2.3.1",
+    "ts-node": "^10.2.1"
+  }
+}

@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  magento:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production-magento
+    container_name: magento
+    volumes:
+      - ./src:/usr/fast/app/src
+    expose:
+      - '3100'
+    ports:
+      - '3100:3100'
+    command: 'node -r dotenv/config dist/app.js'
+    networks:
+      - magento
+
+networks:
+  magento:

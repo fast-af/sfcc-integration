@@ -1,0 +1,11 @@
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export enum V1Availability {
+  UNSPECIFIED = "AVAILABILITY_UNSPECIFIED",
+  AVAILABLE = "AVAILABILITY_AVAILABLE",
+  DISABLED = "AVAILABILITY_DISABLED",
+  PREORDER = "AVAILABILITY_PREORDER",
+};
