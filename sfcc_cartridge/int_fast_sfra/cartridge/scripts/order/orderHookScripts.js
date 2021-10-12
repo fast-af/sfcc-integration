@@ -3,6 +3,7 @@
  */
 var Order = require('dw/order/Order');
 var Status = require('dw/system/Status');
+var OrderMgr = require('dw/order/OrderMgr');
 var CustomerMgr = require('dw/customer/CustomerMgr');
 var fastUtils = require('*/cartridge/scripts/utils/fastUtils');
 var orderUtils = require('~/cartridge/scripts/utils/orderUtils.js');
@@ -42,6 +43,16 @@ exports.afterPOST = function (order) {
 		}
 	} catch (error) {
 		Logger.error('Error on adding customer into Order in after Order Post and error :' + error);
+	}
+
+	//Set the Order Status to Open 
+	try {
+	var orderStatus = OrderMgr.placeOrder(order);
+		if(orderStatus.code === 'OK'){
+			order.setExportStatus(Order.EXPORT_STATUS_READY);									
+		}
+	} catch (error) {
+		Logger.error('Error on update the Order Status in after Order Post and error :' + error);
 	}
 
 	// Send the Confirmation Email
