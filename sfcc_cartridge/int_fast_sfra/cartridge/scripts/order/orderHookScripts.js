@@ -4,6 +4,7 @@
 var Order = require('dw/order/Order');
 var Status = require('dw/system/Status');
 var OrderMgr = require('dw/order/OrderMgr');
+var Transaction = require('dw/system/Transaction');
 var CustomerMgr = require('dw/customer/CustomerMgr');
 var fastUtils = require('*/cartridge/scripts/utils/fastUtils');
 var orderUtils = require('~/cartridge/scripts/utils/orderUtils.js');
@@ -45,12 +46,18 @@ exports.afterPOST = function (order) {
 		Logger.error('Error on adding customer into Order in after Order Post and error :' + error);
 	}
 
-	//Set the Order Status to Open 
+		//Set the Order Status to Open 
 	try {
-	var orderStatus = OrderMgr.placeOrder(order);
-		if(orderStatus.code === 'OK'){
-			order.setExportStatus(Order.EXPORT_STATUS_READY);									
-		}
+		var orderStatus = Transaction.wrap(function () {
+            if (OrderMgr.placeOrder(order) === Status.ERROR) {
+                OrderMgr.failOrder(order);
+				Logger.error('Error on OrderMgr.placeOrder so fail the Order');
+                return false;
+            }
+
+            order.setExportStatus(Order.EXPORT_STATUS_READY);
+            return true;
+        });
 	} catch (error) {
 		Logger.error('Error on update the Order Status in after Order Post and error :' + error);
 	}
