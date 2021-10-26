@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<access-roles xmlns="http://www.demandware.com/xml/impex/accessrole/2007-09-05">
+    <access-role role-id="OCAPI">
+        <description>The OCAPI Role has the rights to perform all OCAPI.</description>
+        <access-controls>
+            <access-control resource-path="LOCALES/de" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/de_DE" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/default" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/en" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/en_CA" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/en_GB" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/en_US" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/es" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/fr" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/fr_CA" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/fr_FR" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/it" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/it_IT" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/ja" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/ja_JP" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/nl" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/zh" permission="ACCESS"/>
+            <access-control resource-path="LOCALES/zh_CN" permission="ACCESS"/>
+            <access-control resource-path="OBJECT/Site/Sites/RefArch" permission="Create_Order_On_Behalf_Of"/>
+            <access-control resource-path="OBJECT/Site/Sites/RefArch" permission="Handle_External_Orders"/>
+            <access-control resource-path="OBJECT/Site/Sites/RefArch" permission="Search_Orders"/>
+        </access-controls>
+    </access-role>
+</access-roles>
+

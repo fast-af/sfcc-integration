@@ -58,6 +58,20 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="fastAuthExpiryDate">
+                <display-name xml:lang="x-default">fast Authorization Expiry Date</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastAuthId">
+                <display-name xml:lang="x-default">fast Authorization Id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>            
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="fast">
@@ -65,6 +79,8 @@
                 <attribute attribute-id="fastStatus"/>
                 <attribute attribute-id="fastId"/>
                 <attribute attribute-id="fastEmailId"/>
+                <attribute attribute-id="fastAuthId"/>
+                <attribute attribute-id="fastAuthExpiryDate"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
