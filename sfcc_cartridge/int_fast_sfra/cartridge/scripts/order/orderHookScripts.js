@@ -39,15 +39,15 @@ exports.modifyGETResponse =function(order , orderResponse) {
 	try {
 		var orderStatus = Transaction.wrap(function () {
 			//Check the Fast order status and updated SFCC Order data
-			if(order.custom.fastStatus == "ORDER_STATUS_CANCELED"){
+			if(order.custom.fastStatus === "ORDER_STATUS_CANCELED"){
 				order.setExportStatus(order.EXPORT_STATUS_NOTEXPORTED);
 				order.setConfirmationStatus(order.CONFIRMATION_STATUS_NOTCONFIRMED);
 				order.setPaymentStatus(order.PAYMENT_STATUS_NOTPAID);
 				order.setStatus(order.ORDER_STATUS_CANCELLED);
 				order.setShippingStatus(Order.SHIPPING_STATUS_NOTSHIPPED);
-			}else if(order.custom.fastStatus == "ORDER_STATUS_BOOKED"){
+			}else if(order.custom.fastStatus === "ORDER_STATUS_BOOKED"){
 				order.setStatus(order.ORDER_STATUS_OPEN);
-			}else if(order.custom.fastStatus == "ORDER_STATUS_PENDING_FULFILLMENT"){
+			}else if(order.custom.fastStatus === "ORDER_STATUS_PENDING_FULFILLMENT"){
 				order.setPaymentStatus(order.PAYMENT_STATUS_PAID);
 				order.setExportStatus(order.EXPORT_STATUS_READY);
 			}
