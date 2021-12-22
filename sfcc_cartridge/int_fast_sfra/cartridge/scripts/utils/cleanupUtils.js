@@ -31,7 +31,7 @@ function cleanupLogs(params) {
 			currDate.setDate(currDate.getDate() - noofDays);
 			Logger.info('Files before  ' + currDate + 'will be cleaned up'); 
 			var files = sourceDir.listFiles();
-            for each (var file in files) {
+            for each (var file in files){
 				if ((file.exists()) || (file.isFile())) {
 					var fName = file.name;
                     var fnameindx = fName.indexOf("-");
@@ -44,7 +44,6 @@ function cleanupLogs(params) {
       				}				
 				}
             }
-
         }
 	}else{
 		var error = 'Error : one or more mandatory parameters are missing from Jobs Input'
@@ -64,7 +63,7 @@ function cleanupLogs(params) {
  FileUtils.deleteDirectory = function (sourceDir) {
 	Logger.info('Entering deleteDirectory () ');
   	var files = sourceDir.listFiles();
-          for each (var xfile in files) {
+          for each(var xfile in files){
 				if ((xfile.exists()) || (xfile.isFile())) {
 					xfile.remove();
 				}
