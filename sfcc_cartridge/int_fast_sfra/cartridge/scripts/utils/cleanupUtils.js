@@ -33,11 +33,9 @@ function cleanupLogs(params) {
 			var files = sourceDir.listFiles();
                         for each (var file in files){
 				if ((file.exists()) || (file.isFile())) {
-					var fName = file.name;
-                                        var fnameindx = fName.indexOf("-");
-                                        fName = fName.substring(fnameindx+1);
-                                        fName = fName.substr(0,8);
-					let fileDate =new Date(fName.substr(0,4),fName.substr(4,2)-1,fName.substr(6,2));
+					let fName = file.name.split("-")[1];
+                    			fName = fName.substring(0,8);
+                   			let fileDate = new Date(fName.substring(0,4),fName.substring(4,6)-1,fName.substring(6,8));
 					if (currDate.getTime() > fileDate.getTime()){
 						Logger.info('File exists in path and the path is ' + file.fullPath);
 						FileUtils.deleteDirectory(file);
