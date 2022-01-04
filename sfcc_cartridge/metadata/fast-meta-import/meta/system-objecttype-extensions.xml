@@ -24,6 +24,12 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="returnData">
+                <display-name xml:lang="x-default">returnData</display-name>
+                <type>set-of-string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="fast">
@@ -31,6 +37,7 @@
                 <attribute attribute-id="fastId"/>
                 <attribute attribute-id="fastEmailId"/>
                 <attribute attribute-id="fastStatus"/>
+                <attribute attribute-id="returnData"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
