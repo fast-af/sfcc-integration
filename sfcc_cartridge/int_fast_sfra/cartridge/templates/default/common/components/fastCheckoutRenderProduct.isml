@@ -9,7 +9,7 @@
 <div class="col-12 fast-wrapper">
     <isif condition="${product && !product.disableFastCheckout}">
         <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
-        <fast-checkout-button class="fast-checkout" id="fastProductCheckoutButton" ${!product.readyToOrder ? 'disabled' : ''}
+        <fast-checkout-button class="fast-checkout" id="fastProductCheckoutButton" ${!product.readyToOrder || !product.available ? 'disabled' : ''}
             app_id="${fastAppID}" product_id="${product.id}" ${fastTheme}>
         </fast-checkout-button>
     </isif>
