@@ -58,6 +58,26 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="returnData">
+                <display-name xml:lang="x-default">returnData</display-name>
+                <type>set-of-string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+             </attribute-definition>
+            <attribute-definition attribute-id="fastAuthExpiryDate">
+                <display-name xml:lang="x-default">fast Authorization Expiry Date</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastAuthId">
+                <display-name xml:lang="x-default">fast Authorization Id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>            
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="fast">
@@ -65,6 +85,9 @@
                 <attribute attribute-id="fastStatus"/>
                 <attribute attribute-id="fastId"/>
                 <attribute attribute-id="fastEmailId"/>
+                <attribute attribute-id="fastAuthId"/>
+                <attribute attribute-id="returnData"/>
+                <attribute attribute-id="fastAuthExpiryDate"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
@@ -98,6 +121,12 @@
                 <min-length>0</min-length>
             </attribute-definition>
         </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="fast">
+                <display-name xml:lang="x-default">Fast</display-name>
+                <attribute attribute-id="fastProdLineId"/>
+            </attribute-group>
+        </group-definitions>
     </type-extension>
 
     <type-extension type-id="Product">
@@ -174,6 +203,46 @@
                     </value-definition>
                 </value-definitions>
             </attribute-definition>
+            <attribute-definition attribute-id="fastAppAuth">
+                <display-name xml:lang="x-default">fast App Auth</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastSFTPPassword">
+                <display-name xml:lang="x-default">Fast SFTP Password</display-name>
+                <type>password</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastSFTPPort">
+                <display-name xml:lang="x-default">Fast SFTP Port</display-name>
+                <type>double</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastSFTPUrl">
+                <display-name xml:lang="x-default">Fast SFTP Url</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastSFTPUsername">
+                <display-name xml:lang="x-default">Fast SFTP Username</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="fastSFTPFileMaxSize">
+                <display-name xml:lang="x-default">Fast SFTP File Max Size</display-name>
+                <type>double</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>200.0</default-value>
+            </attribute-definition>           
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="Fast Configs">
@@ -182,7 +251,16 @@
                 <attribute attribute-id="isFastEnabled"/>
                 <attribute attribute-id="fastAppId"/>
                 <attribute attribute-id="fastTheme"/>
+                <attribute attribute-id="fastAppAuth"/>
             </attribute-group>
+            <attribute-group group-id="Fast Seller Jobs Configs">
+                <display-name xml:lang="x-default">Fast Seller Jobs Configs</display-name>
+                <attribute attribute-id="fastSFTPUrl"/>
+                <attribute attribute-id="fastSFTPUsername"/>
+                <attribute attribute-id="fastSFTPPassword"/>
+                <attribute attribute-id="fastSFTPPort"/>
+                <attribute attribute-id="fastSFTPFileMaxSize"/>
+            </attribute-group>            
         </group-definitions>
     </type-extension>
 </metadata>

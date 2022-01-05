@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+ 
+    <job job-id="Fast Order Cancel" priority="0">
+        <description>Fast Order Cancel</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="SFTPFileDownload" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/sftpDownload.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">sftpDownload</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/data/cancel</parameter>
+                    <parameter name="targetFolder">/src/order/cancel</parameter>
+                    <parameter name="filePattern">(.xml)</parameter>
+                    <parameter name="deleteRemoteFiles">false</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="OrderCancel" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/orderUpdate.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">orderCancel</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/src/order/cancel</parameter>
+                    <parameter name="archiveFolder">/src/archive/order/cancel</parameter>
+                    <parameter name="errorFolder">/src/order/cancelError</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2021-11-30Z</date>
+                <time>21:34:19.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="Fast Order Update with fulfillment" priority="0">
+        <description>Fast Order Update with fulfillment</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="SFTPFileDownload" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/sftpDownload.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">sftpDownload</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/data/fulfillment</parameter>
+                    <parameter name="targetFolder">/src/order/update/fulfillment</parameter>
+                    <parameter name="filePattern">(.xml)</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="OrderUpdateWithFulfillment" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/orderUpdate.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">orderFulfillmentUpdate</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="deleteRemoteFiles">false</parameter>
+                    <parameter name="sourceFolder">/src/order/update/fulfillment</parameter>
+                    <parameter name="archiveFolder">/src/archive/order/update</parameter>
+                    <parameter name="errorFolder">/src/order/updateError</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2021-11-19Z</date>
+                <time>20:19:17.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="Fast Order Update without fulfillment" priority="0">
+        <description>Fast Order Update without fulfillment</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="SFTPFileDownload" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/sftpDownload.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">sftpDownload</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/data/withoutFulfillment</parameter>
+                    <parameter name="targetFolder">/src/order/update/withoutFulfillment</parameter>
+                    <parameter name="filePattern">(.xml)</parameter>
+                    <parameter name="deleteRemoteFiles">false</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="OrderUpdate" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/orderUpdate.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">orderStatusUpdate</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/src/order/update/withoutFulfillment</parameter>
+                    <parameter name="archiveFolder">/src/archive/order/update</parameter>
+                    <parameter name="errorFolder">/src/order/update/error</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2021-11-19Z</date>
+                <time>22:39:40.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="Fast Order Refund" priority="0">
+        <description>Fast Order Refund</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="SFTPFileDownload" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/sftpDownload.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">sftpDownload</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/data/refund</parameter>
+                    <parameter name="targetFolder">/src/order/refund</parameter>
+                    <parameter name="filePattern">(.xml)</parameter>
+                    <parameter name="deleteRemoteFiles">false</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="OrderReturn" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/jobs/orderReturn.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">orderReturn</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/src/order/refund</parameter>
+                    <parameter name="archiveFolder">/src/archive/order/refund</parameter>
+                    <parameter name="errorFolder">/src/order/refundError</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2021-11-30Z</date>
+                <time>13:07:30.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="Clean up Job" priority="0">
+        <description/>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="CleanupLogs" type="ExecuteScriptModule" enforce-restart="false">
+                <description/>
+                <parameters>
+                    <parameter name="ExecuteScriptModule.Module">int_fast_sfra/cartridge/scripts/utils/cleanupUtils.js</parameter>
+                    <parameter name="ExecuteScriptModule.FunctionName">cleanupLogs</parameter>
+                    <parameter name="ExecuteScriptModule.Transactional">false</parameter>
+                    <parameter name="sourceFolder">/src/archive/order</parameter>
+                    <parameter name="numberofDays">2</parameter>
+                </parameters>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="true">
+                <date>2021-12-16Z</date>
+                <time>15:59:12.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+</jobs>
