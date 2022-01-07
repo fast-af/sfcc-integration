@@ -3,7 +3,7 @@
     <service-credential service-credential-id="FastOrder.sandbox">
         <url>https://api.sandbox.fast.co/v1/external/orders/</url>
         <user-id/>
-        <password masked="true">********</password>
+        <password/>
     </service-credential>
 
     <service-profile service-profile-id="FastProfile">
