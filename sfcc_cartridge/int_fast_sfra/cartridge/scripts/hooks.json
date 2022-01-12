@@ -17,6 +17,10 @@
 			"script": "./order/orderHookScripts.js"
 		},
 		{
+			"name": "dw.ocapi.shop.order.afterPATCH",
+			"script": "./order/orderHookScripts.js"
+		},
+		{
 			"name": "dw.ocapi.shop.order.modifyGETResponse",
 			"script": "./order/orderHookScripts.js"
 		},

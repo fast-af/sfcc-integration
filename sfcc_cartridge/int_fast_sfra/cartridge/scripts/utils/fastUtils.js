@@ -1,11 +1,9 @@
 /**
 * 
-* fatUtils.ds  -  Utility functions for Fast custom logic.
+* fastUtils.ds  -  Utility functions for Fast custom logic.
 *
 */
-var Logger = require('dw/system/Logger');
 var ProductMgr = require('dw/catalog/ProductMgr');
-var Logger = require('dw/system/Logger').getLogger('Fast', 'OrderCreations');
 
 /**
  * Get the Master Product Id for given Product.
