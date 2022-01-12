@@ -40,7 +40,7 @@ function getService(fastId ,reqType, payload) {
 
             return JSON.stringify(payload);
         },
-        parseResponse: function (service, response) {
+        parseResponse: function (svc, response) {
             return JSON.parse(response.text);
         },
     
@@ -75,7 +75,6 @@ function orderServiceUpdate(fileJson, jobType) {
     var error = null;
     try{
         var payload = null;
-        var error = null;
 
         switch (jobType) {
             case jobUtils.JOB_TYPE.FULFILLMENT:
@@ -85,6 +84,7 @@ function orderServiceUpdate(fileJson, jobType) {
             case jobUtils.JOB_TYPE.UPDATE:
                 payload = getUpdatePayLoad(fileJson);
                 error = makeServiceCall(fileJson , 'update', payload);
+                break;
             case jobUtils.JOB_TYPE.CANCEL:
                 payload = getCancelPayLoad(fileJson);
                 error = makeServiceCall(fileJson , 'cancel', payload);
@@ -147,9 +147,8 @@ function getServiceUrlPrefix(fastId, reqType){
         prefix = prefix + '/business_event'
     }else if(reqType ==='refund'){
         prefix = prefix + '/refund'
-    }else if(reqType ==='cancel'){
-        prefix = prefix;
     }
+    //for cancel - prefix will be fastId
     
     Logger.info('Fast service API URL is '+ prefix +' for the Job type : ' + reqType);
     return prefix;
@@ -209,7 +208,6 @@ function getFulfillmentPayLoad(itemJson) {
     //Init and set the shipment
     var shipment ={}
     var statusJson = itemJson.shipment;
-    //shipmentJson.shipmentID = shipmentID;
     shipment.tracking_number = statusJson.trackingNumber;
     shipment.carrier = statusJson.shippingMethod;
     shipment.estimated_delivery_date = statusJson.estimatedDeliveryDate;

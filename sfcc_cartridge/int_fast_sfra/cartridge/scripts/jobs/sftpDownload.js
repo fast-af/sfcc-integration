@@ -33,8 +33,8 @@ function sftpDownload(params) {
 		//Check the mandatory inputs
 		if(!empty(sourceFolderPath) && !empty(targetFolder) && !empty(filePattern))
 		{
+			var sftpClient : SFTPClient = new SFTPClient();
 			try{
-				var sftpClient : SFTPClient = new SFTPClient();
 				var sitePrefs  = Site.getCurrent().getPreferences();
 
 				if (!sitePrefs) {
@@ -62,6 +62,9 @@ function sftpDownload(params) {
 						Logger.info('SFTP connected with Username :  ' + sFTPUsername);
 
 						var sourceFolder : boolean = sftpClient.cd(sourceFolderPath);
+						if(!sourceFolder){
+							Logger.error('SftpDownload: Unable to find the sourceFolder ' + sourceFolderPath);
+						}
 						var regExp : RegExp = new RegExp(filePattern);
 						var fileInfoList : Array =  sftpClient.list();
 

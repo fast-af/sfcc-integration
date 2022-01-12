@@ -34,9 +34,7 @@ exports.modifyGETResponse =function(order , orderResponse) {
  * @param {*} order 
  * @param {*} orderInput 
  */
-
- exports.afterPATCH = function (order, orderInput) {
-
+exports.afterPATCH = function (order, orderInput) {
 	Logger.debug('AFTER Patch ORDER HOOK - Start');
 
 	try {
@@ -63,7 +61,6 @@ exports.modifyGETResponse =function(order , orderResponse) {
 	Logger.debug('End Patch ORDER HOOK - End');
 };
 
-
 /**
  * After Order create Post - Custom logic. 
  * 
@@ -84,7 +81,7 @@ exports.afterPOST = function (order) {
 		Logger.error('Error on adding customer into Order in after Order Post and error :' + error);
 	}
 
-		//Set the Order Status to Open 
+	//Set the Order Status to Open 
 	try {
 		var orderStatus = Transaction.wrap(function () {
             if (OrderMgr.placeOrder(order) === Status.ERROR) {
@@ -92,8 +89,6 @@ exports.afterPOST = function (order) {
 				Logger.error('Error on OrderMgr.placeOrder so fail the Order');
                 return false;
             }
-
-            //order.setExportStatus(Order.EXPORT_STATUS_READY);
 
             return true;
         });
