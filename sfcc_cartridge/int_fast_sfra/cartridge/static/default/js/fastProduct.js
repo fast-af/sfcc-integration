@@ -24,12 +24,12 @@ $(document).ready(function () {
 
     checkoutButton.addEventListener('click', event => {
         Fast.checkout({
-            appId: checkoutButton.getAttribute('app_id'),
+            appId: checkoutButton.getAttribute('fast_app_id'),
             buttonId: event.target.id,
             products: [
                 {
-                    id: $('.product-id').html(),
-                    variantId: $('.product-id').html(),
+                    id: checkoutButton.getAttribute('product_id'),
+                    variantId: checkoutButton.getAttribute('product_id'),
                     quantity: qtyValuesFromProduct()
                 }
             ],
