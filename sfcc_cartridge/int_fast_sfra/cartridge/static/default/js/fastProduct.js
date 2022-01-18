@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     checkoutButton.addEventListener('click', event => {
         Fast.checkout({
-            appId: checkoutButton.getAttribute('fast_app_id'),
+            appId: checkoutButton.getAttribute('app_id'),
             buttonId: event.target.id,
             products: [
                 {
