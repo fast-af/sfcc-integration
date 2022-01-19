@@ -1,17 +1,15 @@
 .fast-wrapper {
     border: 1px solid #dfdfdf;
     border-radius: 5px;
-    margin-bottom: 20px;
-    padding-right: 20%;
-    padding-left: 20%;
-    padding-bottom: 20px;
+    margin-bottom: 1.25rem;
+    padding: 0 5.7rem 1.25rem;
 }
 
 .fast-or-message {
     position: relative;
-    top: 80px;
+    top: 5rem;
     background: white;
-    width: 40px;
+    width: 2.5rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
