@@ -4,5 +4,6 @@
         <name xml:lang="x-default">Fast</name>
         <description xml:lang="x-default">Fast Payment</description>
         <enabled-flag>true</enabled-flag>
+        <processor-id>FAST_CHECKOUT</processor-id>
     </payment-method>
 </payment-settings>

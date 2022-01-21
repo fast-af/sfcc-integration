@@ -20,14 +20,6 @@ var Logger = require('dw/system/Logger').getLogger('Fast', 'OrderCreations');
         //Added the Fast custom value into Basket
         var fastId = basket.custom.fastId;
         var fastStatus = basket.custom.fastStatus;
-        if(basket.custom.fastId && basket.custom.fastStatus){
-            //Add FAST payment into Basket
-            Transaction.wrap(function () {
-                var paymentInstrument = basket.createPaymentInstrument(
-                    "Fast" , basket.totalGrossPrice
-                    );
-            });
-        }
     } catch (error) {
         Logger.error('Error on Before Add Basket - Custom logic and error :' + error);
     }

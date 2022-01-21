@@ -69,6 +69,22 @@ exports.afterPATCH = function (order, orderInput) {
  */
 exports.afterPOST = function (order) {
 	Logger.debug('AFTER POST ORDER HOOK');
+
+	//Set the transaction number in Payment 
+	try {
+		var paymentInstruments : Collection = order.getPaymentInstruments();
+		for each (let paymentInstrument in paymentInstruments) {
+			if(paymentInstrument.getPaymentMethod().equals("Fast")){
+				Transaction.wrap(function(){
+					if(order.custom.fastId){
+						paymentInstrument.paymentTransaction.setTransactionID(order.custom.fastId);
+					}
+				});
+			}
+		}
+	} catch (error) {
+		Logger.error('Error on setting the Fast transaction value on Payment Instruments and error :' + error);
+	}
 	
 	//Set the Customer to Order
 	try {
@@ -104,6 +120,4 @@ exports.afterPOST = function (order) {
 	}
 
     return new Status(Status.OK);
-
-
 };
