@@ -116,6 +116,14 @@
                ]
             },
             {
+               "resource_id": "/baskets/{basket_id}/payment_instruments",
+               "read_attributes": "(**)",
+               "write_attributes": "(**)",
+               "methods": [
+                   "post"
+               ]
+            },
+            {
                "resource_id":"/customers",
                "read_attributes":"(**)",
                "write_attributes":"(**)",
