@@ -9,25 +9,6 @@ var cartUtils = require('*/cartridge/scripts/utils/cartUtils');
 var Logger = require('dw/system/Logger').getLogger('Fast', 'OrderCreations');
 
 /**
- * Before Add Basket - Custom logic. 
- * @param {*} basket 
- * @param {*} items 
- */
- exports.beforePOST = function (basket , items) {
-    Logger.debug('BEFORE BASKET POST HOOK');
-
-    try {
-        //Added the Fast custom value into Basket
-        var fastId = basket.custom.fastId;
-        var fastStatus = basket.custom.fastStatus;
-    } catch (error) {
-        Logger.error('Error on Before Add Basket - Custom logic and error :' + error);
-    }
-
-    return new Status(Status.OK);
-};
-
-/**
  * Modify Basket GET Response hook.
  * 
  * @param {*} basket 
