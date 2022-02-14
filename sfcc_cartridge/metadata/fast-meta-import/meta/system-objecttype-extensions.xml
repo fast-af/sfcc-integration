@@ -242,7 +242,19 @@
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>200.0</default-value>
-            </attribute-definition>           
+            </attribute-definition>
+            <attribute-definition attribute-id="enableFastInQuickview">
+                <display-name xml:lang="x-default">Enable Fast In Quickview</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableFastExclusive">
+                <display-name xml:lang="x-default">Enable Fast Exclusive</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>       
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="Fast Configs">
@@ -252,6 +264,8 @@
                 <attribute attribute-id="fastAppId"/>
                 <attribute attribute-id="fastTheme"/>
                 <attribute attribute-id="fastAppAuth"/>
+                <attribute attribute-id="enableFastInQuickview"/>
+                <attribute attribute-id="enableFastExclusive"/>
             </attribute-group>
             <attribute-group group-id="Fast Seller Jobs Configs">
                 <display-name xml:lang="x-default">Fast Seller Jobs Configs</display-name>
