@@ -76,6 +76,7 @@ $(document).ready(function () {
     
     }
 
+
     function qtyValuesFromProduct() {
         var selectedQty;
         Array.from(qty.options).forEach(function (optionElement) {
