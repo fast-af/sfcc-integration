@@ -26,7 +26,7 @@ var sendOrderConfirmationEmail = function (order) {
         var emailObj = {
             to: toEmail,
             subject: Resource.msg('subject.order.confirmation.email', 'order', null),
-            from: Site.current.getCustomPreferenceValue('customerServiceEmail') || 'no-reply@tfast.com',
+            from: Site.current.getCustomPreferenceValue('customerServiceEmail') || 'no-reply@fast.com',
             type: emailHelpers.emailTypes.orderConfirmation
         };
     
