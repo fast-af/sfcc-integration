@@ -254,6 +254,12 @@
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableNewCustomerCreations">
+                <display-name xml:lang="x-default">Enable New Customer Creations</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
             </attribute-definition>       
         </custom-attribute-definitions>
         <group-definitions>
@@ -266,6 +272,7 @@
                 <attribute attribute-id="fastAppAuth"/>
                 <attribute attribute-id="enableFastInQuickview"/>
                 <attribute attribute-id="enableFastExclusive"/>
+                <attribute attribute-id="enableNewCustomerCreations"/>
             </attribute-group>
             <attribute-group group-id="Fast Seller Jobs Configs">
                 <display-name xml:lang="x-default">Fast Seller Jobs Configs</display-name>

@@ -1,6 +1,7 @@
 /**
  * Class to Hook for Order  OCAPI and add the Custom logic. 
  */
+var Site = require('dw/system/Site');
 var Order = require('dw/order/Order');
 var Status = require('dw/system/Status');
 var OrderMgr = require('dw/order/OrderMgr');
@@ -69,6 +70,7 @@ exports.afterPATCH = function (order, orderInput) {
  */
 exports.afterPOST = function (order) {
 	Logger.debug('AFTER POST ORDER HOOK');
+	var fastAppAuth = Site.current.getCustomPreferenceValue('fastAppAuth')
 
 	//Set the transaction number in Payment 
 	try {
@@ -88,6 +90,7 @@ exports.afterPOST = function (order) {
 	
 	//Set the Customer to Order
 	try {
+		var enableNewCustomerCreations = Site.current.getCustomPreferenceValue('enableNewCustomerCreations')
 		var login = order.custom.fastEmailId;
 		//Query the Customer from current Customer List
  		var profile = CustomerMgr.queryProfile('email = {0}', login);
@@ -97,7 +100,7 @@ exports.afterPOST = function (order) {
 			//If User part current User List, add the Customer to Order
 			var lookupCustomer = profile.getCustomer();
 			order.setCustomer(lookupCustomer);
-		}else{
+		}else if(enableNewCustomerCreations){
 			//If the given user is not part of Current User List, Create new User
 			var password = fastUtils.getRandomPassword();
 			var newCustomer = CustomerMgr.createCustomer(login, password);
