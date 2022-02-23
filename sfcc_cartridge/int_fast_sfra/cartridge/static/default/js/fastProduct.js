@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     function qtyValuesFromProduct() {
         var selectedQty;
-        if(Array.isArray(qty.options)){
+        if(qty.options){
             Array.from(qty.options).forEach(function (optionElement) {
                 var isOptionSelected = optionElement.value;
 
