@@ -38,14 +38,18 @@ $(document).ready(function () {
 
     function qtyValuesFromProduct() {
         var selectedQty;
-        Array.from(qty.options).forEach(function (optionElement) {
-            var isOptionSelected = optionElement.value;
+        if(qty.options){
+            Array.from(qty.options).forEach(function (optionElement) {
+                var isOptionSelected = optionElement.value;
 
-            if (optionElement.selected) {
-                selectedQty = isOptionSelected;
-                return false;
-            }
-        });
+                if (optionElement.selected) {
+                    selectedQty = isOptionSelected;
+                    return false;
+                }
+            });
+        } else if(qty.value){
+            selectedQty = qty.value;
+        }
         return parseInt(selectedQty);
     }
 
