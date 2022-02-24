@@ -24,6 +24,20 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="customerId">
+                <display-name xml:lang="x-default">Customer Id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="customerNo">
+                <display-name xml:lang="x-default">Customer No</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition> 
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="fast">
@@ -31,6 +45,8 @@
                 <attribute attribute-id="fastId"/>
                 <attribute attribute-id="fastEmailId"/>
                 <attribute attribute-id="fastStatus"/>
+                <attribute attribute-id="customerNo"/>
+                <attribute attribute-id="customerId"/>
             </attribute-group>
         </group-definitions>
     </type-extension>

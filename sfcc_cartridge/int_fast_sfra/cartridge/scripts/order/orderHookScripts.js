@@ -88,57 +88,11 @@ exports.afterPOST = function (order) {
 		Logger.error('Error on setting the Fast transaction value on Payment Instruments and error :' + error);
 	}
 	
-	//Set the Customer to Order
-	try {
-		var enableNewCustomerCreations = Site.current.getCustomPreferenceValue('enableNewCustomerCreations')
-		var login = order.custom.fastEmailId;
-		//Query the Customer from current Customer List
- 		var profile = CustomerMgr.queryProfile('email = {0}', login);
-		 //Check given User in List
-		 Transaction.begin();
-		if(profile){
-			//If User part current User List, add the Customer to Order
-			var lookupCustomer = profile.getCustomer();
-			order.setCustomer(lookupCustomer);
-		}else if(enableNewCustomerCreations){
-			//If the given user is not part of Current User List, Create new User
-			var password = fastUtils.getRandomPassword();
-			var newCustomer = CustomerMgr.createCustomer(login, password);
-
-			var firstName = order.billingAddress.firstName;
-			var lastName = order.billingAddress.lastName;
-			//Create new customer profile
-			var newCustomerProfile = newCustomer.getProfile();
-			//Add data to profile from Billing address
-			newCustomerProfile.firstName = firstName;
-			newCustomerProfile.lastName = lastName;
-			newCustomerProfile.email = login;
-			//Add address book to Customer from Shipping address
-			var addressBook = newCustomerProfile.addressBook;
-			var usedAddress = order.defaultShipment.shippingAddress;
+	// set email ID
+	Transaction.wrap(function(){
+		order.customerEmail = order.custom.fastEmailId;
+	});
 	
-			if(usedAddress){
-				address = addressBook.createAddress(usedAddress.firstName + "_" + usedAddress.city);
-				address.setFirstName(usedAddress.firstName);
-				address.setLastName(usedAddress.lastName);
-				address.setAddress1(usedAddress.address1);
-				address.setAddress2(usedAddress.address2);
-				address.setCity(usedAddress.city);
-				address.setPostalCode(usedAddress.postalCode);
-				address.setStateCode(usedAddress.stateCode);
-				address.setCountryCode(usedAddress.countryCode.value);
-				address.setPhone(usedAddress.phone);
-			}
-			//add the Customer to Order
-			order.setCustomer(newCustomer);
-			//Send Password reset email to the User. 
-			fastUtils.sendPasswordResetEmail(newCustomer, login, firstName, lastName);
-		}
-		Transaction.commit();
-	} catch (error) {
-		Logger.error('Error on adding customer into Order in after Order Post and error :' + error);
-	}
-
 	//Set the Order Status to Open 
 	try {
 		var orderStatus = Transaction.wrap(function () {
