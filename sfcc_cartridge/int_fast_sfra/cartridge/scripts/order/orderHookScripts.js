@@ -1,7 +1,6 @@
 /**
  * Class to Hook for Order  OCAPI and add the Custom logic. 
  */
-var Site = require('dw/system/Site');
 var Order = require('dw/order/Order');
 var Status = require('dw/system/Status');
 var OrderMgr = require('dw/order/OrderMgr');
@@ -70,7 +69,6 @@ exports.afterPATCH = function (order, orderInput) {
  */
 exports.afterPOST = function (order) {
 	Logger.debug('AFTER POST ORDER HOOK');
-	var fastAppAuth = Site.current.getCustomPreferenceValue('fastAppAuth')
 
 	//Set the transaction number in Payment 
 	try {
