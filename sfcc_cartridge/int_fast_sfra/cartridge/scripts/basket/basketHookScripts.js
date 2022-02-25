@@ -41,7 +41,7 @@ exports.afterPATCH =function(basket , basketInput) {
 	var enableCreateCustomer = request.getHttpHeaders().get("x-enable-create-customer");
     var enableNewCustomerCreations = Site.current.getCustomPreferenceValue('enableNewCustomerCreations')
 
-    if(enableCreateCustomer && enableNewCustomerCreations){
+    if(enableCreateCustomer){
         //Set the Customer to Order
         try {
             var login = basket.custom.fastEmailId;
@@ -56,8 +56,8 @@ exports.afterPATCH =function(basket , basketInput) {
                     basket.custom.customerNo = profile.customerNo;
                     basket.custom.customerId = lookupCustomer.ID;
                 });
-            }else{
-
+            //If customer not in SFCC and New Customer Creations is enabled in SFCC
+            }else if(enableNewCustomerCreations){
                 Transaction.begin();
                 //If the given user is not part of Current User List, Create new User
                 var password = fastUtils.getRandomPassword();
