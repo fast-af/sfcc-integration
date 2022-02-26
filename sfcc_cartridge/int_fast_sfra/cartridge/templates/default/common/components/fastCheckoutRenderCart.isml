@@ -1,11 +1,21 @@
 <isset name="fastAppID" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastAppId')}" scope="page" />
 <isset name="fastTheme" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastTheme')}" scope="page" />
+<isset name="isEnableFastExclusive" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableFastExclusive')}" scope="page" />
 
-<div class="col-12 fast-wrapper">
-    <isif condition="${pdict.isFastEnabled}">
-        <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
-        <fast-checkout-cart-button id="fastCartCheckoutButton" cart_id="${pdict.cartId}" app_id="${fastAppID}"
+<isif condition="${isEnableFastExclusive}">
+    <fast-checkout-cart-button id="fastCartCheckoutButton" cart_id="${pdict.cartId}" app_id="${fastAppID}"
             ${fastTheme}>
-        </fast-checkout-cart-button>
-    </isif>
-</div>
+    </fast-checkout-cart-button>
+<iselse>
+    <div class="col-12 fast-wrapper">
+         <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
+         <fast-checkout-cart-button id="fastCartCheckoutButton" cart_id="${pdict.cartId}" app_id="${fastAppID}"
+             ${fastTheme}>
+         </fast-checkout-cart-button>
+    </div>
+    <div class="row">
+        <div class="col-12 checkout-continue">
+            <isinclude template="cart/checkoutButtons" />
+        </div>
+    </div>
+</isif>

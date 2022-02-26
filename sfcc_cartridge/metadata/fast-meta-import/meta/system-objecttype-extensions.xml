@@ -24,6 +24,20 @@
                 <externally-managed-flag>false</externally-managed-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="customerId">
+                <display-name xml:lang="x-default">Customer Id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="customerNo">
+                <display-name xml:lang="x-default">Customer No</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition> 
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="fast">
@@ -31,6 +45,8 @@
                 <attribute attribute-id="fastId"/>
                 <attribute attribute-id="fastEmailId"/>
                 <attribute attribute-id="fastStatus"/>
+                <attribute attribute-id="customerNo"/>
+                <attribute attribute-id="customerId"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
@@ -242,7 +258,25 @@
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
                 <default-value>200.0</default-value>
-            </attribute-definition>           
+            </attribute-definition>
+            <attribute-definition attribute-id="enableFastInQuickview">
+                <display-name xml:lang="x-default">Enable Fast In Quickview</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableFastExclusive">
+                <display-name xml:lang="x-default">Enable Fast Exclusive</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableNewCustomerCreations">
+                <display-name xml:lang="x-default">Enable New Customer Creations</display-name>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>       
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="Fast Configs">
@@ -252,6 +286,9 @@
                 <attribute attribute-id="fastAppId"/>
                 <attribute attribute-id="fastTheme"/>
                 <attribute attribute-id="fastAppAuth"/>
+                <attribute attribute-id="enableFastInQuickview"/>
+                <attribute attribute-id="enableFastExclusive"/>
+                <attribute attribute-id="enableNewCustomerCreations"/>
             </attribute-group>
             <attribute-group group-id="Fast Seller Jobs Configs">
                 <display-name xml:lang="x-default">Fast Seller Jobs Configs</display-name>

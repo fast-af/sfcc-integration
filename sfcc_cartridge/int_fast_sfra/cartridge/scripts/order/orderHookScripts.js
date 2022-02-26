@@ -86,17 +86,11 @@ exports.afterPOST = function (order) {
 		Logger.error('Error on setting the Fast transaction value on Payment Instruments and error :' + error);
 	}
 	
-	//Set the Customer to Order
-	try {
-		var profile = CustomerMgr.queryProfile('email = {0}', order.custom.fastEmailId);
-		if(profile){
-			var lookupCustomer = profile.getCustomer();
-			order.setCustomer(lookupCustomer);
-		}
-	} catch (error) {
-		Logger.error('Error on adding customer into Order in after Order Post and error :' + error);
-	}
-
+	// set email ID
+	Transaction.wrap(function(){
+		order.customerEmail = order.custom.fastEmailId;
+	});
+	
 	//Set the Order Status to Open 
 	try {
 		var orderStatus = Transaction.wrap(function () {

@@ -9,6 +9,10 @@
             "script": "./basket/basketHookScripts.js"
 		},
 		{
+			"name": "dw.ocapi.shop.basket.afterPATCH",
+            "script": "./basket/basketHookScripts.js"
+		},
+		{
 			"name": "dw.ocapi.shop.order.afterPOST",
 			"script": "./order/orderHookScripts.js"
 		},
