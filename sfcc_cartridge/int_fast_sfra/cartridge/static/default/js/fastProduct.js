@@ -11,7 +11,32 @@ $(document).ready(function () {
         checkoutFastButton.removeClass('fast-checkout');
     }
 
+   // following code will exucute when click on quickview button which having class 'quickview'
+    $('body').on('click', '.quickview', function (e) {
+        e.preventDefault();
+        
+        setTimeout(function() {
+            initQuickviewFastBtn();
+        }, 1000);
+    });
+    
+    // following code will exucute when cart page product editProductModal open which render the quickview isml 
+    $('a[data-target="#editProductModal"]').click(function(e) {
+        e.preventDefault();
+        
+        setTimeout(function() {
+            initQuickviewFastBtn();
+        }, 1000);
+    });
+
     $('body').on('product:updateAddToCart', function (e, response) {
+        checkoutFastButton = $('#fastQuickviewCheckoutButton');
+        checkoutFastButton.attr('disabled', (!response.product.readyToOrder || !response.product.available));
+        checkoutFastButton.attr('product_id', response.product.id);
+        addEventToFastButton(response);
+    });
+    
+    function initQuickviewFastBtn() {
         var isQuickViewModalOpen = document.querySelector('#quickViewModal') != null ? document.querySelector('#quickViewModal').classList.contains('show') : false,
             isEditProductModalOpen = document.querySelector('#editProductModal') != null ? document.querySelector('#editProductModal').classList.contains('show') : false,
             quickviewQty = 1;
@@ -23,13 +48,12 @@ $(document).ready(function () {
                 
                 checkoutFastButton.on('click', function() {
                     if (isQuickViewModalOpen) {
-                    	quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim() );
+                        quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim() );
                     }
                     
                     if (isEditProductModalOpen) {
-                    	quickviewQty = parseInt( $('#editProductModal .quantity-select').find(":selected").val().trim() );
+                        quickviewQty = parseInt( $('#editProductModal .quantity-select').find(":selected").val().trim() );
                     }
-                    
                     
                     Fast.checkout({
                         appId: checkoutFastButton.attr('app_id'),
@@ -48,10 +72,7 @@ $(document).ready(function () {
             
         }
         
-        checkoutFastButton.attr('disabled', (!response.product.readyToOrder || !response.product.available));
-        checkoutFastButton.attr('product_id', response.product.id);
-        addEventToFastButton(response);
-    });
+    }
 
     if (typeof Fast !== 'function') {
         console.error('Fast not loaded, please reload the page and try again.');
