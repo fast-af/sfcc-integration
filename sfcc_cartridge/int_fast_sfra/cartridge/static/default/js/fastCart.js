@@ -1,44 +1,66 @@
 'use strict';
+const myTimeout = setTimeout(initCartFastBtn, 2000);
 
-$(document).ready(function () {
-    var fastButtonExist = setInterval(function() {
-        if ($('fast-checkout-cart-button').length) {
-            var fast = new Fast();
-            var checkoutFastJsButton = $('fast-checkout-cart-button');
-
-            checkoutFastJsButton.click(function(event) {
-                // This is not the final file is in WIP for future changes
-                if (event.target.closest('.cart-page')) {
-                    fast.addEventListener("user_event", function(event) {
-            
-                        var cartClearingEvents = [
-                            "Checkout - Order Created",
-                            "Checkout - Order Updated",
-                            "Checkout - Order Completed",
-                        ];
+function initCartFastBtn() {
+    
+    $(document).ready(function () {
+        // following code is for cart page fast checkout button to check checkout events
+        var cartPageCheckoutButton = $('.cart-page fast-checkout-cart-button');
+        
+        if (cartPageCheckoutButton.length > 0) {
+            cartPageCheckoutButton.click(function(){
+                var fast = new Fast();
                 
-                        if (cartClearingEvents.includes(event.name)) {
+                fast.addEventListener("user_event", function(event) {
+                    
+                    var cartClearingEvents = [
+                        "Checkout - Order Created",
+                        "Checkout - Order Updated",
+                        "Checkout - Order Completed",
+                    ];
+            
+                    if (cartClearingEvents.includes(event.name)) {
                         // First hit custom endpoint from FAST-130 to clear cart, later reload page.
-                        window.location.reload();
-                        }
-                    });
-                } else {
-                    fast.addEventListener("user_event", function(event) {
+                        window.location.href = window.location.href;
+                    }
+                });
+            });
+        }
+        // following code with prepare when mouse hover on minicart 
+        $(".minicart").hover(function(){
             
-                        var cartClearingEvents = [
-                            "Checkout - Order Created",
-                            "Checkout - Order Updated",
-                            "Checkout - Order Completed",
-                        ];
+        	setTimeout(function() {
+        		var minicartCheckoutButton = $(".minicart fast-checkout-cart-button");
                 
-                        if (cartClearingEvents.includes(event.name)) {
-                        // Only reload page on mini cart
-                        window.location.reload();
-                        }
+                if (minicartCheckoutButton.length > 0) {
+                    minicartCheckoutButton.click(function(){
+                        var fast = new Fast();
+                        
+                        fast.addEventListener("user_event", function(event) {
+                            
+                            var cartClearingEvents = [
+                                "Checkout - Order Created",
+                                "Checkout - Order Updated",
+                                "Checkout - Order Completed",
+                            ];
+                    
+                            if (cartClearingEvents.includes(event.name)) {
+                                // First hit custom endpoint from FAST-130 to clear cart, later reload page.
+                                window.location.href = window.location.href;
+                            }
+                        });
                     });
                 }
-            });
-            clearInterval(fastButtonExist);
-        }
-    }, 100);
-});
+    		}, 1000);
+
+        }, function(){
+        	var minicartCheckoutButton = $(".minicart fast-checkout-cart-button");
+            if (minicartCheckoutButton.length > 0) {
+                $('.minicart fast-checkout-cart-button').off('click');
+            }
+        });
+        
+    });
+
+}
+
