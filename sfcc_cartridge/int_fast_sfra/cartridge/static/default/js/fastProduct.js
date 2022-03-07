@@ -30,7 +30,6 @@ $(document).ready(function () {
     });
 
     $('body').on('product:updateAddToCart', function (e, response) {
-        checkoutFastButton = $('#fastQuickviewCheckoutButton');
         checkoutFastButton.attr('disabled', (!response.product.readyToOrder || !response.product.available));
         checkoutFastButton.attr('product_id', response.product.id);
         addEventToFastButton(response);
