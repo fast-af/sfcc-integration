@@ -58,7 +58,7 @@ $(document).ready(function () {
         return false;
     }
 
-    if ( checkoutButton !== null && checkoutButton.length > 0) {
+    if ( checkoutButton !== null && $(checkoutButton).length > 0) {
         
         checkoutButton.addEventListener('click', event => {
             Fast.checkout({
