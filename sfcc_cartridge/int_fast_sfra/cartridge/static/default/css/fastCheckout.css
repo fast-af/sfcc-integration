@@ -27,4 +27,5 @@
 
 #editProductModal .fast-wrapper {
 	display: none;
+	pointer-events: none;
 }
