@@ -15,6 +15,7 @@
 
         <isif condition="${isFastEnabled && fastJsUrl !== null}">
             <script src="${fastJsUrl}"></script>
+            <script src="${URLUtils.staticURL('/js/fastCart.js')}"></script>
             <link rel="stylesheet" href="${URLUtils.staticURL('/css/fastCheckout.css')}" />
         </isif>
         <isif condition="${pdict.canonicalUrl}" >
