@@ -11,17 +11,8 @@ $(document).ready(function () {
         checkoutFastButton.removeClass('fast-checkout');
     }
 
-   // following code will exucute when click on quickview button which having class 'quickview'
+    // following code will exucute when click on quickview button which having class 'quickview'
     $('body').on('click', '.quickview', function (e) {
-        e.preventDefault();
-        
-        setTimeout(function() {
-            initQuickviewFastBtn();
-        }, 1000);
-    });
-    
-    // following code will exucute when cart page product editProductModal open which render the quickview isml 
-    $('a[data-target="#editProductModal"]').click(function(e) {
         e.preventDefault();
         
         setTimeout(function() {
@@ -30,6 +21,10 @@ $(document).ready(function () {
     });
 
     $('body').on('product:updateAddToCart', function (e, response) {
+        var isQuickViewModalOpen = document.querySelector('#quickViewModal') != null ? document.querySelector('#quickViewModal').classList.contains('show') : false;
+        if (isQuickViewModalOpen) {
+            checkoutFastButton = $('#fastQuickviewCheckoutButton');
+        }
         checkoutFastButton.attr('disabled', (!response.product.readyToOrder || !response.product.available));
         checkoutFastButton.attr('product_id', response.product.id);
         addEventToFastButton(response);
@@ -37,21 +32,16 @@ $(document).ready(function () {
     
     function initQuickviewFastBtn() {
         var isQuickViewModalOpen = document.querySelector('#quickViewModal') != null ? document.querySelector('#quickViewModal').classList.contains('show') : false,
-            isEditProductModalOpen = document.querySelector('#editProductModal') != null ? document.querySelector('#editProductModal').classList.contains('show') : false,
             quickviewQty = 1;
             
-        if (isQuickViewModalOpen || isEditProductModalOpen) {
+        if (isQuickViewModalOpen) {
             checkoutFastButton = $('#fastQuickviewCheckoutButton');
             
             if ( checkoutFastButton !== null && checkoutFastButton.length > 0) {
                 
                 checkoutFastButton.on('click', function() {
                     if (isQuickViewModalOpen) {
-                        quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim() );
-                    }
-                    
-                    if (isEditProductModalOpen) {
-                        quickviewQty = parseInt( $('#editProductModal .quantity-select').find(":selected").val().trim() );
+                        quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim(), 10 );
                     }
                     
                     Fast.checkout({
