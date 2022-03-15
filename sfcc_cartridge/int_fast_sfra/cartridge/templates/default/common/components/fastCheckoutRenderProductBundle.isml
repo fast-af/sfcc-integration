@@ -1,0 +1,11 @@
+<isset name="fastAppID" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastAppId')}" scope="page" />
+<isset name="fastTheme" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastTheme')}" scope="page" />
+
+<div class="col-12 fast-wrapper">
+    <isif condition="${product}">
+        <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
+        <fast-checkout-button class="fast-checkout" id="fastBundleProductCheckoutButton" ${!product.readyToOrder || !product.available ? 'disabled' : ''}
+            app_id="${fastAppID}" product_id="${product.id}" ${fastTheme}>
+        </fast-checkout-button>
+    </isif>
+</div>

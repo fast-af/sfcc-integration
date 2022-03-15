@@ -3,12 +3,17 @@
 $(document).ready(function () {
     var checkoutButton = document.querySelector('fast-checkout-button');
     var checkoutFastButton = $('#fastProductCheckoutButton');
+	var checkoutFastBundleProductButton = $('#fastBundleProductCheckoutButton');
     var fastQuickviewCheckoutButton = $('#fastQuickviewCheckoutButton');
     var qty = document.querySelector('.quantity-select');
     var isQuickViewModalOpen = false;
     
     if (!checkoutFastButton.attr('disabled')) {
         checkoutFastButton.removeClass('fast-checkout');
+    }
+	
+	if (!checkoutFastBundleProductButton.attr('disabled')) {
+    	checkoutFastBundleProductButton.removeClass('fast-checkout');
     }
 
     $('body').on('product:updateAddToCart', function (e, response) {
