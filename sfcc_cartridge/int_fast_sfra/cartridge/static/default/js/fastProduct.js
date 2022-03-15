@@ -3,7 +3,7 @@
 $(document).ready(function () {
     var checkoutButton = document.querySelector('fast-checkout-button');
     var checkoutFastButton = $('#fastProductCheckoutButton');
-	var checkoutFastBundleProductButton = $('#fastBundleProductCheckoutButton');
+    var checkoutFastBundleProductButton = $('#fastBundleProductCheckoutButton');
     var fastQuickviewCheckoutButton = $('#fastQuickviewCheckoutButton');
     var qty = document.querySelector('.quantity-select');
     var isQuickViewModalOpen = false;
@@ -11,9 +11,9 @@ $(document).ready(function () {
     if (!checkoutFastButton.attr('disabled')) {
         checkoutFastButton.removeClass('fast-checkout');
     }
-	
-	if (!checkoutFastBundleProductButton.attr('disabled')) {
-    	checkoutFastBundleProductButton.removeClass('fast-checkout');
+    
+    if (!checkoutFastBundleProductButton.attr('disabled')) {
+        checkoutFastBundleProductButton.removeClass('fast-checkout');
     }
 
     $('body').on('product:updateAddToCart', function (e, response) {
@@ -28,11 +28,11 @@ $(document).ready(function () {
                 
                 checkoutFastButton.on('click', function() {
                     if (isQuickViewModalOpen) {
-                    	quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim() );
+                        quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim() );
                     }
                     
                     if (isEditProductModalOpen) {
-                    	quickviewQty = parseInt( $('#editProductModal .quantity-select').find(":selected").val().trim() );
+                        quickviewQty = parseInt( $('#editProductModal .quantity-select').find(":selected").val().trim() );
                     }
                     
                     
