@@ -1,0 +1,12 @@
+<isset name="isFastEnabled" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('isFastEnabled')}" scope="page" />
+<isset name="isFastEnabledOnBundleProduct" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('enableFastInBundleProduct')}" scope="page" />
+<isset name="fastJsUrl" value="${dw.system.Site.getCurrent().getCustomPreferenceValue('fastJsUrl')}" scope="page" />
+
+<isif condition="${isFastEnabled && isFastEnabledOnBundleProduct && fastJsUrl !== null}">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/fastProduct.js');
+    </isscript>
+
+    <isinclude template="common/components/fastCheckoutRenderProductBundle" />
+</isif>
