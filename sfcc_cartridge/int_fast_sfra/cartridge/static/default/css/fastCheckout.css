@@ -24,3 +24,7 @@
 .fast-checkout-enabled {
     pointer-events: all;
 }
+
+#editProductModal .fast-wrapper {
+	display: none;
+}
