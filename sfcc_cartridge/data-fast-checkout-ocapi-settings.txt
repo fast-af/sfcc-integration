@@ -1,0 +1,43 @@
+{
+    "_v": "18.7",
+    "clients": [
+    {
+        "client_id": "<<client_id>>",
+        "resources": [
+        {
+            "resource_id": "/product_search",
+            "read_attributes": "(**)",
+            "write_attributes": "(**)",
+            "cache_time": 900,
+            "methods": [
+                "post"
+            ]
+        },
+        {
+            "resource_id": "/user_search",
+            "read_attributes": "(**)",
+            "write_attributes": "(**)",
+            "cache_time": 900,
+            "methods": [
+                "post"
+            ]
+        },
+        {
+            "resource_id": "/customer_lists/*/customer_search",
+            "read_attributes": "(**)",
+            "write_attributes": "(**)",
+            "methods": [
+                "post"
+            ]
+        },
+        {
+            "methods": [
+                "get"
+            ],
+            "read_attributes": "(**)",
+            "write_attributes": "(**)",
+            "resource_id": "/products/*"
+        }]
+
+    }]
+}
