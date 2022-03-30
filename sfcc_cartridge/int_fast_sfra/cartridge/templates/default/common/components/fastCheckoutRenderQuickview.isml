@@ -5,8 +5,11 @@
 <isif condition="${isEnableFastInQuickview}">
     <div class="col-12 fast-wrapper">
         <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
-        <fast-checkout-cart-button ${!product.readyToOrder || !product.available ? "disabled" : ""} id="fastQuickviewCheckoutButton" product_id="${product.id}" cart_id="${pdict.cartId}" app_id="${fastAppID}"
-                ${fastTheme}>
-        </fast-checkout-cart-button>
+        <fast-checkout-button ${!product.readyToOrder || !product.available ? "disabled" : ""} id="fastQuickviewCheckoutButton" 
+            product_id="${product.id}"
+            app_id="${fastAppID}"
+            quantity="${StringUtils.formatInteger(product.selectedQuantity)}"
+            ${fastTheme}>
+        </fast-checkout-button>
     </div>
 </isif>

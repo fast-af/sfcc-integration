@@ -5,7 +5,10 @@
     <isif condition="${product && !product.disableFastCheckout}">
         <div class="fast-or-message">${Resource.msg('button.fast.or.message', 'fast', null)}</div>
         <fast-checkout-button class="fast-checkout" id="fastProductCheckoutButton" ${!product.readyToOrder || !product.available ? 'disabled' : ''}
-            app_id="${fastAppID}" product_id="${product.id}" ${fastTheme}>
+            app_id="${fastAppID}" 
+            product_id="${product.id}"
+            quantity="${StringUtils.formatInteger(product.selectedQuantity)}"
+            ${fastTheme}>
         </fast-checkout-button>
     </isif>
 </div>
