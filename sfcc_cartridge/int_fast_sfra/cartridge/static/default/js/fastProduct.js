@@ -11,97 +11,28 @@ $(document).ready(function () {
         checkoutFastButton.removeClass('fast-checkout');
     }
 
-    // following code will exucute when click on quickview button which having class 'quickview'
-    $('body').on('click', '.quickview', function (e) {
-        e.preventDefault();
-        
-        setTimeout(function() {
-            initQuickviewFastBtn();
-        }, 1000);
-    });
-
-    $('body').on('product:updateAddToCart', function (e, response) {
+    $('body').on('product:updateAddToCart', function (e, response) { 
         var isQuickViewModalOpen = document.querySelector('#quickViewModal') != null ? document.querySelector('#quickViewModal').classList.contains('show') : false;
+        var isFastCheckoutProduct = document.querySelector('#fastProductCheckoutButton') != null ? true : false;
+        var prodId = response.product.id;
+        var prodQty = parseInt( response.product.selectedQuantity, 10);
+        
         if (isQuickViewModalOpen) {
             checkoutFastButton = $('#fastQuickviewCheckoutButton');
         }
+        if (isFastCheckoutProduct) {
+            checkoutFastButton = $('#fastProductCheckoutButton');
+        }
+        
         checkoutFastButton.attr('disabled', (!response.product.readyToOrder || !response.product.available));
-        checkoutFastButton.attr('product_id', response.product.id);
+        checkoutFastButton.attr('product_id', prodId);
+        checkoutFastButton.attr('quantity', prodQty);
         addEventToFastButton(response);
     });
-    
-    function initQuickviewFastBtn() {
-        var isQuickViewModalOpen = document.querySelector('#quickViewModal') != null ? document.querySelector('#quickViewModal').classList.contains('show') : false,
-            quickviewQty = 1;
-            
-        if (isQuickViewModalOpen) {
-            checkoutFastButton = $('#fastQuickviewCheckoutButton');
-            
-            if ( checkoutFastButton !== null && checkoutFastButton.length > 0) {
-                
-                checkoutFastButton.on('click', function() {
-                    if (isQuickViewModalOpen) {
-                        quickviewQty = parseInt( $('#quickViewModal .quantity-select').find(":selected").val().trim(), 10 );
-                    }
-                    
-                    Fast.checkout({
-                        appId: checkoutFastButton.attr('app_id'),
-                        buttonId: event.target.id,
-                        products: [
-                            {
-                                id: checkoutFastButton.attr('product_id'),
-                                variantId: checkoutFastButton.attr('product_id'),
-                                quantity: quickviewQty
-                            }
-                        ],
-                    })
-                });
-                
-            }
-            
-        }
-        
-    }
 
     if (typeof Fast !== 'function') {
         console.error('Fast not loaded, please reload the page and try again.');
         return false;
-    }
-
-    if ( checkoutButton !== null && $(checkoutButton).length > 0) {
-        
-        checkoutButton.addEventListener('click', event => {
-            Fast.checkout({
-                appId: checkoutButton.getAttribute('app_id'),
-                buttonId: event.target.id,
-                products: [
-                    {
-                        id: checkoutButton.getAttribute('product_id'),
-                        variantId: checkoutButton.getAttribute('product_id'),
-                        quantity: qtyValuesFromProduct()
-                    }
-                ],
-            })
-        });
-    
-    }
-
-
-    function qtyValuesFromProduct() {
-        var selectedQty;
-        if(qty.options){
-            Array.from(qty.options).forEach(function (optionElement) {
-                var isOptionSelected = optionElement.value;
-
-                if (optionElement.selected) {
-                    selectedQty = isOptionSelected;
-                    return false;
-                }
-            });
-        } else if(qty.value){
-            selectedQty = qty.value;
-        }
-        return parseInt(selectedQty);
     }
 
     function addEventToFastButton(result) {
