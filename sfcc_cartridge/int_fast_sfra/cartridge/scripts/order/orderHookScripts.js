@@ -91,6 +91,15 @@ exports.afterPOST = function (order) {
 		order.customerEmail = order.custom.fastEmailId;
 	});
 	
+	//Read marketing consent property from Request Header
+	var fastMarketingConsent = request.httpHeaders.get('x-fast-marketing-consent');
+	//If value true, allow user to add marketing consent logic 
+	if(fastMarketingConsent){
+		Transaction.wrap(function(){
+			order.custom.fastMarketingConsent = true;
+		});
+	}
+
 	//Set the Order Status to Open 
 	try {
 		var orderStatus = Transaction.wrap(function () {
